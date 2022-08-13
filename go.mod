@@ -1,4 +1,4 @@
-module github.com/xiaozhuoge/cacheserver_grpc
+module github.com/xiaozhuoge/cacheserver_grpc_go
 
 go 1.19
 
