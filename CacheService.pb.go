@@ -25,7 +25,7 @@ var file_CacheService_proto_rawDesc = []byte{
 	0x0a, 0x12, 0x43, 0x61, 0x63, 0x68, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x10, 0x63, 0x61, 0x63, 0x68, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65,
 	0x72, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x1a, 0x0e, 0x43, 0x61, 0x63, 0x68, 0x65, 0x4d, 0x73, 0x67,
-	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xbd, 0x06, 0x0a, 0x0c, 0x43, 0x61, 0x63, 0x68, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0x9f, 0x07, 0x0a, 0x0c, 0x43, 0x61, 0x63, 0x68, 0x65,
 	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x5c, 0x0a, 0x0e, 0x53, 0x65, 0x74, 0x53, 0x74,
 	0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x22, 0x2e, 0x63, 0x61, 0x63, 0x68,
 	0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x53, 0x65, 0x74,
@@ -77,45 +77,54 @@ var file_CacheService_proto_rawDesc = []byte{
 	0x74, 0x69, 0x70, 0x6c, 0x65, 0x4b, 0x65, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
 	0x25, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x67, 0x72,
 	0x70, 0x63, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x44, 0x61, 0x74, 0x61, 0x57, 0x69, 0x74,
-	0x68, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x42, 0x17, 0x5a, 0x15, 0x2e, 0x2f, 0x63, 0x61, 0x63, 0x68,
-	0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x67, 0x6f, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x68, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x12, 0x60, 0x0a, 0x0e, 0x47, 0x65, 0x6e, 0x53, 0x6e, 0x6f,
+	0x77, 0x66, 0x6c, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x12, 0x27, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65,
+	0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x47, 0x65, 0x6e, 0x53,
+	0x6e, 0x6f, 0x77, 0x66, 0x6c, 0x61, 0x6b, 0x65, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x25, 0x2e, 0x63, 0x61, 0x63, 0x68, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f,
+	0x67, 0x72, 0x70, 0x63, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x44, 0x61, 0x74, 0x61, 0x57,
+	0x69, 0x74, 0x68, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x42, 0x17, 0x5a, 0x15, 0x2e, 0x2f, 0x63, 0x61,
+	0x63, 0x68, 0x65, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x67,
+	0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_CacheService_proto_goTypes = []interface{}{
-	(*SetStringRequest)(nil),     // 0: cacheserver_grpc.SetStringRequest
-	(*SetIntRequest)(nil),        // 1: cacheserver_grpc.SetIntRequest
-	(*OneKeyRequest)(nil),        // 2: cacheserver_grpc.OneKeyRequest
-	(*SetExpireRequest)(nil),     // 3: cacheserver_grpc.SetExpireRequest
-	(*MultipleKeyRequest)(nil),   // 4: cacheserver_grpc.MultipleKeyRequest
-	(*ResultDataWithString)(nil), // 5: cacheserver_grpc.ResultDataWithString
-	(*ResultDataWithBool)(nil),   // 6: cacheserver_grpc.ResultDataWithBool
-	(*ResultDataWithInt64)(nil),  // 7: cacheserver_grpc.ResultDataWithInt64
+	(*SetStringRequest)(nil),      // 0: cacheserver_grpc.SetStringRequest
+	(*SetIntRequest)(nil),         // 1: cacheserver_grpc.SetIntRequest
+	(*OneKeyRequest)(nil),         // 2: cacheserver_grpc.OneKeyRequest
+	(*SetExpireRequest)(nil),      // 3: cacheserver_grpc.SetExpireRequest
+	(*MultipleKeyRequest)(nil),    // 4: cacheserver_grpc.MultipleKeyRequest
+	(*GenSnowflakeIdRequest)(nil), // 5: cacheserver_grpc.GenSnowflakeIdRequest
+	(*ResultDataWithString)(nil),  // 6: cacheserver_grpc.ResultDataWithString
+	(*ResultDataWithBool)(nil),    // 7: cacheserver_grpc.ResultDataWithBool
+	(*ResultDataWithInt64)(nil),   // 8: cacheserver_grpc.ResultDataWithInt64
 }
 var file_CacheService_proto_depIdxs = []int32{
-	0, // 0: cacheserver_grpc.CacheService.SetStringValue:input_type -> cacheserver_grpc.SetStringRequest
-	1, // 1: cacheserver_grpc.CacheService.SetIntValue:input_type -> cacheserver_grpc.SetIntRequest
-	0, // 2: cacheserver_grpc.CacheService.SetStringValueNx:input_type -> cacheserver_grpc.SetStringRequest
-	1, // 3: cacheserver_grpc.CacheService.SetIntValueNx:input_type -> cacheserver_grpc.SetIntRequest
-	2, // 4: cacheserver_grpc.CacheService.LoadKeyIntValue:input_type -> cacheserver_grpc.OneKeyRequest
-	2, // 5: cacheserver_grpc.CacheService.LoadKeyStringValue:input_type -> cacheserver_grpc.OneKeyRequest
-	2, // 6: cacheserver_grpc.CacheService.IncreaseKey:input_type -> cacheserver_grpc.OneKeyRequest
-	3, // 7: cacheserver_grpc.CacheService.SetExpire:input_type -> cacheserver_grpc.SetExpireRequest
-	4, // 8: cacheserver_grpc.CacheService.RemoveKeys:input_type -> cacheserver_grpc.MultipleKeyRequest
-	5, // 9: cacheserver_grpc.CacheService.SetStringValue:output_type -> cacheserver_grpc.ResultDataWithString
-	5, // 10: cacheserver_grpc.CacheService.SetIntValue:output_type -> cacheserver_grpc.ResultDataWithString
-	6, // 11: cacheserver_grpc.CacheService.SetStringValueNx:output_type -> cacheserver_grpc.ResultDataWithBool
-	6, // 12: cacheserver_grpc.CacheService.SetIntValueNx:output_type -> cacheserver_grpc.ResultDataWithBool
-	7, // 13: cacheserver_grpc.CacheService.LoadKeyIntValue:output_type -> cacheserver_grpc.ResultDataWithInt64
-	5, // 14: cacheserver_grpc.CacheService.LoadKeyStringValue:output_type -> cacheserver_grpc.ResultDataWithString
-	7, // 15: cacheserver_grpc.CacheService.IncreaseKey:output_type -> cacheserver_grpc.ResultDataWithInt64
-	6, // 16: cacheserver_grpc.CacheService.SetExpire:output_type -> cacheserver_grpc.ResultDataWithBool
-	7, // 17: cacheserver_grpc.CacheService.RemoveKeys:output_type -> cacheserver_grpc.ResultDataWithInt64
-	9, // [9:18] is the sub-list for method output_type
-	0, // [0:9] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: cacheserver_grpc.CacheService.SetStringValue:input_type -> cacheserver_grpc.SetStringRequest
+	1,  // 1: cacheserver_grpc.CacheService.SetIntValue:input_type -> cacheserver_grpc.SetIntRequest
+	0,  // 2: cacheserver_grpc.CacheService.SetStringValueNx:input_type -> cacheserver_grpc.SetStringRequest
+	1,  // 3: cacheserver_grpc.CacheService.SetIntValueNx:input_type -> cacheserver_grpc.SetIntRequest
+	2,  // 4: cacheserver_grpc.CacheService.LoadKeyIntValue:input_type -> cacheserver_grpc.OneKeyRequest
+	2,  // 5: cacheserver_grpc.CacheService.LoadKeyStringValue:input_type -> cacheserver_grpc.OneKeyRequest
+	2,  // 6: cacheserver_grpc.CacheService.IncreaseKey:input_type -> cacheserver_grpc.OneKeyRequest
+	3,  // 7: cacheserver_grpc.CacheService.SetExpire:input_type -> cacheserver_grpc.SetExpireRequest
+	4,  // 8: cacheserver_grpc.CacheService.RemoveKeys:input_type -> cacheserver_grpc.MultipleKeyRequest
+	5,  // 9: cacheserver_grpc.CacheService.GenSnowflakeId:input_type -> cacheserver_grpc.GenSnowflakeIdRequest
+	6,  // 10: cacheserver_grpc.CacheService.SetStringValue:output_type -> cacheserver_grpc.ResultDataWithString
+	6,  // 11: cacheserver_grpc.CacheService.SetIntValue:output_type -> cacheserver_grpc.ResultDataWithString
+	7,  // 12: cacheserver_grpc.CacheService.SetStringValueNx:output_type -> cacheserver_grpc.ResultDataWithBool
+	7,  // 13: cacheserver_grpc.CacheService.SetIntValueNx:output_type -> cacheserver_grpc.ResultDataWithBool
+	8,  // 14: cacheserver_grpc.CacheService.LoadKeyIntValue:output_type -> cacheserver_grpc.ResultDataWithInt64
+	6,  // 15: cacheserver_grpc.CacheService.LoadKeyStringValue:output_type -> cacheserver_grpc.ResultDataWithString
+	8,  // 16: cacheserver_grpc.CacheService.IncreaseKey:output_type -> cacheserver_grpc.ResultDataWithInt64
+	7,  // 17: cacheserver_grpc.CacheService.SetExpire:output_type -> cacheserver_grpc.ResultDataWithBool
+	8,  // 18: cacheserver_grpc.CacheService.RemoveKeys:output_type -> cacheserver_grpc.ResultDataWithInt64
+	8,  // 19: cacheserver_grpc.CacheService.GenSnowflakeId:output_type -> cacheserver_grpc.ResultDataWithInt64
+	10, // [10:20] is the sub-list for method output_type
+	0,  // [0:10] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_CacheService_proto_init() }
