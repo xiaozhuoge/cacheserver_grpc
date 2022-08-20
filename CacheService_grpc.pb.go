@@ -31,6 +31,9 @@ type CacheServiceClient interface {
 	IncreaseKey(ctx context.Context, in *OneKeyRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error)
 	SetExpire(ctx context.Context, in *SetExpireRequest, opts ...grpc.CallOption) (*ResultDataWithBool, error)
 	RemoveKeys(ctx context.Context, in *MultipleKeyRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error)
+	PfAdd(ctx context.Context, in *PfAddRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error)
+	PfCount(ctx context.Context, in *MultipleKeyRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error)
+	PfCountGroupByKey(ctx context.Context, in *MultipleKeyRequest, opts ...grpc.CallOption) (*ResultDataWithInt64Array, error)
 	GenSnowflakeId(ctx context.Context, in *GenSnowflakeIdRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error)
 }
 
@@ -123,6 +126,33 @@ func (c *cacheServiceClient) RemoveKeys(ctx context.Context, in *MultipleKeyRequ
 	return out, nil
 }
 
+func (c *cacheServiceClient) PfAdd(ctx context.Context, in *PfAddRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error) {
+	out := new(ResultDataWithInt64)
+	err := c.cc.Invoke(ctx, "/cacheserver_grpc.CacheService/PfAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) PfCount(ctx context.Context, in *MultipleKeyRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error) {
+	out := new(ResultDataWithInt64)
+	err := c.cc.Invoke(ctx, "/cacheserver_grpc.CacheService/PfCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) PfCountGroupByKey(ctx context.Context, in *MultipleKeyRequest, opts ...grpc.CallOption) (*ResultDataWithInt64Array, error) {
+	out := new(ResultDataWithInt64Array)
+	err := c.cc.Invoke(ctx, "/cacheserver_grpc.CacheService/PfCountGroupByKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *cacheServiceClient) GenSnowflakeId(ctx context.Context, in *GenSnowflakeIdRequest, opts ...grpc.CallOption) (*ResultDataWithInt64, error) {
 	out := new(ResultDataWithInt64)
 	err := c.cc.Invoke(ctx, "/cacheserver_grpc.CacheService/GenSnowflakeId", in, out, opts...)
@@ -145,6 +175,9 @@ type CacheServiceServer interface {
 	IncreaseKey(context.Context, *OneKeyRequest) (*ResultDataWithInt64, error)
 	SetExpire(context.Context, *SetExpireRequest) (*ResultDataWithBool, error)
 	RemoveKeys(context.Context, *MultipleKeyRequest) (*ResultDataWithInt64, error)
+	PfAdd(context.Context, *PfAddRequest) (*ResultDataWithInt64, error)
+	PfCount(context.Context, *MultipleKeyRequest) (*ResultDataWithInt64, error)
+	PfCountGroupByKey(context.Context, *MultipleKeyRequest) (*ResultDataWithInt64Array, error)
 	GenSnowflakeId(context.Context, *GenSnowflakeIdRequest) (*ResultDataWithInt64, error)
 	mustEmbedUnimplementedCacheServiceServer()
 }
@@ -179,6 +212,15 @@ func (UnimplementedCacheServiceServer) SetExpire(context.Context, *SetExpireRequ
 }
 func (UnimplementedCacheServiceServer) RemoveKeys(context.Context, *MultipleKeyRequest) (*ResultDataWithInt64, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveKeys not implemented")
+}
+func (UnimplementedCacheServiceServer) PfAdd(context.Context, *PfAddRequest) (*ResultDataWithInt64, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PfAdd not implemented")
+}
+func (UnimplementedCacheServiceServer) PfCount(context.Context, *MultipleKeyRequest) (*ResultDataWithInt64, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PfCount not implemented")
+}
+func (UnimplementedCacheServiceServer) PfCountGroupByKey(context.Context, *MultipleKeyRequest) (*ResultDataWithInt64Array, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PfCountGroupByKey not implemented")
 }
 func (UnimplementedCacheServiceServer) GenSnowflakeId(context.Context, *GenSnowflakeIdRequest) (*ResultDataWithInt64, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenSnowflakeId not implemented")
@@ -358,6 +400,60 @@ func _CacheService_RemoveKeys_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CacheService_PfAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PfAddRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).PfAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cacheserver_grpc.CacheService/PfAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).PfAdd(ctx, req.(*PfAddRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_PfCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MultipleKeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).PfCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cacheserver_grpc.CacheService/PfCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).PfCount(ctx, req.(*MultipleKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_PfCountGroupByKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MultipleKeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).PfCountGroupByKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cacheserver_grpc.CacheService/PfCountGroupByKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).PfCountGroupByKey(ctx, req.(*MultipleKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CacheService_GenSnowflakeId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenSnowflakeIdRequest)
 	if err := dec(in); err != nil {
@@ -418,6 +514,18 @@ var CacheService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveKeys",
 			Handler:    _CacheService_RemoveKeys_Handler,
+		},
+		{
+			MethodName: "PfAdd",
+			Handler:    _CacheService_PfAdd_Handler,
+		},
+		{
+			MethodName: "PfCount",
+			Handler:    _CacheService_PfCount_Handler,
+		},
+		{
+			MethodName: "PfCountGroupByKey",
+			Handler:    _CacheService_PfCountGroupByKey_Handler,
 		},
 		{
 			MethodName: "GenSnowflakeId",
